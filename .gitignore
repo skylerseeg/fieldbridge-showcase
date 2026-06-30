@@ -1,0 +1,12 @@
+# This is a showcase repo — no app source, build artifacts, or secrets belong here.
+.env
+.env.*
+*.key
+*.pem
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
