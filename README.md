@@ -37,19 +37,25 @@ I designed and built it solo, end-to-end, validated against a **production Vista
 
 ## Screenshots
 
-> The UI below runs on a fictional demo tenant ("Summit Civil Constructors") populated with synthetic data - no real customer, vendor, or financial information.
+> Every screenshot runs on a fictional demo tenant ("Summit Civil Constructors") populated with synthetic data - no real customer, vendor, or financial information. **[See all 13 dashboards in the full gallery.](docs/screenshots.md)**
 
 **Executive Dashboard** - cross-module KPI rollup: financial (WIP), operations, bid pipeline, and roster, with a trailing-12-month estimate-vs-actual revenue curve.
 
 ![Executive Dashboard](assets/screenshots/executive-dashboard.png)
 
+**Recommendations** - Claude-generated next-actions aggregated across every module, prioritized P1/P2/P3 with dollar impact, owner, and a recommended step. The same insight engine feeds a recommendation rail on each dashboard.
+
+![Recommendations](assets/screenshots/recommendations.png)
+
+**Activity Feed** - every Claude agent run and ingest job, severity-ranked, with per-call token counts and cost - the metering layer made visible.
+
+![Activity Feed](assets/screenshots/activity-feed.png)
+
 **Fleet P&L** - per-truck haul activity: revenue, A/R exposure, ownership mix, and utilization, rolled up from the equipment-utilization mart.
 
 ![Fleet P&L](assets/screenshots/fleet-pnl.png)
 
-**Equipment** - fleet utilization, ticket activity, and rental exposure across every owned and rented asset, with a stale-ticket attention rail.
-
-![Equipment](assets/screenshots/equipment.png)
+> More: Equipment, Jobs (WIP), Bids, Cost Coding, Predictive Maintenance, Work Orders, Vendors, Proposals, and Safety - all in the **[full gallery](docs/screenshots.md)**.
 
 ---
 
