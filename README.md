@@ -37,7 +37,7 @@ I designed and built it solo, end-to-end, validated against a **production Vista
 
 ## Screenshots
 
-> Every screenshot runs on a fictional demo tenant ("Summit Civil Constructors") populated with synthetic data - no real customer, vendor, or financial information. **[See all 13 dashboards in the full gallery.](docs/screenshots.md)**
+> Every screenshot runs on a fictional demo tenant ("Summit Civil Constructors") populated with synthetic data - no real customer, vendor, or financial information. **[See all 18 dashboards in the full gallery.](docs/screenshots.md)**
 
 **Executive Dashboard** - cross-module KPI rollup: financial (WIP), operations, bid pipeline, and roster, with a trailing-12-month estimate-vs-actual revenue curve.
 
@@ -51,11 +51,15 @@ I designed and built it solo, end-to-end, validated against a **production Vista
 
 ![Activity Feed](assets/screenshots/activity-feed.png)
 
+**Price History & Trends** - per-material unit price over time with a min/max band and a per-vendor purchase ledger, built from the two-pass materials normalizer over ERP purchase lines + AI-extracted invoices. Shows whether a quote is in line and how a material has drifted.
+
+![Price History](assets/screenshots/price-history.png)
+
 **Fleet P&L** - per-truck haul activity: revenue, A/R exposure, ownership mix, and utilization, rolled up from the equipment-utilization mart.
 
 ![Fleet P&L](assets/screenshots/fleet-pnl.png)
 
-> More: Equipment, Jobs (WIP), Bids, Cost Coding, Predictive Maintenance, Work Orders, Vendors, Proposals, and Safety - all in the **[full gallery](docs/screenshots.md)**.
+> More: Materials & Savings, Equipment, Jobs (WIP), Bids, Cost Coding, Predictive Maintenance, Work Orders, Vendors, Proposals, Spend Trends, and Safety - all in the **[full gallery](docs/screenshots.md)**.
 
 ---
 

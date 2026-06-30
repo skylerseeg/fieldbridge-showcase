@@ -2,7 +2,7 @@
 
 A walk through the FieldBridge web app. Every screen below runs on a **fictional demo tenant ("Summit Civil Constructors") populated entirely with synthetic data** - no real customer, vendor, employee, or financial information appears anywhere.
 
-The frontend is React 18 + TypeScript + Tailwind + shadcn/ui, with Recharts for visualization. Every dashboard pairs a data view with an **AI recommendation rail** powered by the metered Claude insight engine.
+The frontend is React 18 + TypeScript + Tailwind + shadcn/ui, with Recharts for visualization. Every operational dashboard pairs a data view with an **AI recommendation rail** powered by the metered Claude insight engine.
 
 ---
 
@@ -14,7 +14,7 @@ Cross-module KPI rollup - financial (WIP), operations, bid pipeline, and roster 
 ![Executive Dashboard](../assets/screenshots/executive-dashboard.png)
 
 ### Recommendations
-Claude-generated next-actions aggregated across every module, prioritized P1/P2/P3 with dollar impact, owner, category, and a recommended step. Each item is actionable (done / snooze / dismiss) and survives regeneration. A conversational triage rail lets a user drill into any recommendation.
+Claude-generated next-actions aggregated across every module, prioritized P1/P2/P3 with dollar impact, owner, category, and a recommended step. Each item is actionable (done / snooze / dismiss) and survives regeneration.
 
 ![Recommendations](../assets/screenshots/recommendations.png)
 
@@ -22,6 +22,33 @@ Claude-generated next-actions aggregated across every module, prioritized P1/P2/
 Every Claude agent run and data-ingest job, severity-ranked over a trailing 30 days, with per-call token counts and dollar cost - the per-tenant/per-agent metering layer made visible.
 
 ![Activity Feed](../assets/screenshots/activity-feed.png)
+
+---
+
+## Materials intelligence
+
+The materials suite is built on a two-pass normalizer that collapses free-text purchase descriptions (from ERP PO/AP lines + AI-extracted invoices) into canonical materials, then benchmarks price per material per vendor.
+
+### Price History & Trends
+Per-material unit price over time: a monthly trend with min/max band, change since first purchase, and a recent-purchase ledger showing each vendor's price - so you can see whether a quote is in line and how a material has drifted.
+
+![Price History](../assets/screenshots/price-history.png)
+
+### Materials & Pricing
+Every material the company buys, with a per-vendor comparison (cheapest first), who to call to negotiate, the cross-vendor price spread, and the full purchase ledger with Excel export.
+
+![Materials](../assets/screenshots/materials.png)
+
+### Savings Opportunities
+Materials bought from 2+ vendors where the company paid above the cheapest vendor's average - ranked by dollars on the table. An upper-bound ROI view across the purchasing book.
+
+![Savings](../assets/screenshots/savings.png)
+
+### Materials Overview & Spend Trends
+A leadership landing (total spend, savings, materials tracked, vendor count) and a spend-trends dashboard that trends Equipment / Materials / Services / Other spend over time and by vendor.
+
+![Materials Overview](../assets/screenshots/materials-overview.png)
+![Spend Trends](../assets/screenshots/spend-trends.png)
 
 ---
 
@@ -33,7 +60,7 @@ Per-truck haul activity rolled up from the equipment-utilization mart: revenue, 
 ![Fleet P&L](../assets/screenshots/fleet-pnl.png)
 
 ### Equipment
-Fleet utilization, ticket activity, and rental exposure across every owned and rented asset, with a stale-ticket attention rail surfacing units with no recent activity.
+Fleet utilization, ticket activity, and rental exposure across every owned and rented asset, with a stale-ticket attention rail.
 
 ![Equipment](../assets/screenshots/equipment.png)
 
@@ -91,4 +118,4 @@ Incident reports from near-miss through fatality, triaged into investigation and
 
 ---
 
-*These dashboards are a subset of the full application surface. Modules that depend on live external services (telematics GPS maps, Azure-backed media library, ChromaDB project search) are not shown here because they require those services running rather than a static demo dataset.*
+*These 18 dashboards cover the operational surface of the app. A few screens (Fleet GPS live map, Jobsite check-in, Bid Intelligence's multi-state public-bid network, and Timecards FTE planning) depend on live external services or datasets and are not shown here because they require those running rather than a static demo dataset.*
