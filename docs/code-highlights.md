@@ -1,4 +1,4 @@
-# FieldBridge — Code Highlights
+# FieldBridge - Code Highlights
 
 A few representative excerpts from the private codebase, lightly trimmed and sanitized (no credentials, no proprietary ERP schema). They show the design decisions behind the headline features.
 
@@ -31,7 +31,7 @@ def generate_insight(module, data_context, prompt_template, *, tenant_id=None, m
         messages=[{"role": "user", "content": user_message}],
     )
 
-    # A forced tool call truncated by max_tokens comes back with an empty `input` dict —
+    # A forced tool call truncated by max_tokens comes back with an empty `input` dict -
     # detect it explicitly rather than letting validation fail opaquely.
     tool_block = next((b for b in response.content if getattr(b, "type", None) == "tool_use"), None)
     if tool_block is None or "recommendations" not in (tool_block.input or {}):
@@ -55,7 +55,7 @@ def generate_insight(module, data_context, prompt_template, *, tenant_id=None, m
 
 ## 2. ERP read/write split with per-tenant credentials
 
-The only path to Vista. Reads via pyodbc SQL; writes via REST (not shown) — never SQL. Credentials come from the tenant row, so one deployment serves many companies' ERPs.
+The only path to Vista. Reads via pyodbc SQL; writes via REST (not shown) - never SQL. Credentials come from the tenant row, so one deployment serves many companies' ERPs.
 
 ```python
 def build_vista_conn_str(tenant: Tenant) -> str:
@@ -86,7 +86,7 @@ def get_blob_container_name(tenant: Tenant) -> str:
     return tenant.azure_storage_container or f"fieldbridge-{tenant.slug}"   # per-tenant blob container
 ```
 
-**Why it matters:** multi-tenant isolation isn't a runtime check bolted on later — the connection string, the vector collection, and the blob container are all *derived from the tenant*, so there's no code path that accidentally crosses tenants.
+**Why it matters:** multi-tenant isolation isn't a runtime check bolted on later - the connection string, the vector collection, and the blob container are all *derived from the tenant*, so there's no code path that accidentally crosses tenants.
 
 ---
 
@@ -116,20 +116,20 @@ record = InvoiceRecord.model_validate(tool_input(response))
 record.doc_type = classify(record)                     # invoice / pay-app / credit memo / statement / ...
 ```
 
-**Why it matters:** the model choice was made against a *measured baseline*, not a guess — and the cost (~$0.024/PDF across ~26k documents) was budgeted up front.
+**Why it matters:** the model choice was made against a *measured baseline*, not a guess - and the cost (~$0.024/PDF across ~26k documents) was budgeted up front.
 
 ---
 
 ## 4. Two-pass materials normalization (deterministic fast path + LLM)
 
-The ERP's structured material code is populated on only ~1.5% of PO lines, so price comparison can't rely on it. Free-text descriptions get normalized into a canonical identity — but the LLM only ever sees the *distinct* descriptions, which is the cost lever.
+The ERP's structured material code is populated on only ~1.5% of PO lines, so price comparison can't rely on it. Free-text descriptions get normalized into a canonical identity - but the LLM only ever sees the *distinct* descriptions, which is the cost lever.
 
 ```python
 def normalize_materials(lines: list[PurchaseLine]) -> list[CanonicalMaterial]:
-    # Pass 1 — deterministic catalog join. Free, high-confidence.
+    # Pass 1 - deterministic catalog join. Free, high-confidence.
     resolved, unresolved = catalog_join(lines)
 
-    # Pass 2 — LLM only on DISTINCT unresolved descriptions (dedupe before inference).
+    # Pass 2 - LLM only on DISTINCT unresolved descriptions (dedupe before inference).
     distinct = unique_by_description(unresolved)
     normalized = llm_normalize(distinct)   # -> base_material, size_spec, part_number, material_kind, confidence
     by_desc = {n.description: n for n in normalized}
@@ -174,7 +174,7 @@ REGISTRY = {
 }
 ```
 
-**Why it matters:** the abstraction earns its keep — five state scrapers + a federal feed share one parser for the common engine, and contractor-name reconciliation is centralized so analytics see one identity per company.
+**Why it matters:** the abstraction earns its keep - five state scrapers + a federal feed share one parser for the common engine, and contractor-name reconciliation is centralized so analytics see one identity per company.
 
 ---
 
