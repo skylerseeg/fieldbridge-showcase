@@ -29,7 +29,7 @@ Heavy-civil contractors run their entire business on **Trimble Viewpoint Vista**
 
 On top of that integration layer sits a suite of **AI-native** features — document-vision invoice extraction, materials price intelligence, public-bid competitive analytics, an agentic data-analysis studio, predictive maintenance, and a semantic project-memory store — all metered per tenant for cost control.
 
-It was built at **VanCon Inc.** (a Utah heavy-civil contractor) on a dog-food → productize → SaaS path: ship it for one real company first, then generalize.
+I designed and built it solo, end-to-end, validated against a **production Vista ERP** with real data — not a toy dataset — on a "make it work for one real operation first, then generalize" path.
 
 > **Note on scope.** FieldBridge is designed ERP-agnostic where it can be — Vista is the first integration, not the only intended one. Vendor-specific schema lives behind a single bounded service so a second ERP is an adapter, not a rewrite.
 
