@@ -35,6 +35,24 @@ I designed and built it solo, end-to-end, validated against a **production Vista
 
 ---
 
+## Screenshots
+
+> The UI below runs on a fictional demo tenant ("Summit Civil Constructors") populated with synthetic data — no real customer, vendor, or financial information.
+
+**Executive Dashboard** — cross-module KPI rollup: financial (WIP), operations, bid pipeline, and roster, with a trailing-12-month estimate-vs-actual revenue curve.
+
+![Executive Dashboard](assets/screenshots/executive-dashboard.png)
+
+**Fleet P&L** — per-truck haul activity: revenue, A/R exposure, ownership mix, and utilization, rolled up from the equipment-utilization mart.
+
+![Fleet P&L](assets/screenshots/fleet-pnl.png)
+
+**Equipment** — fleet utilization, ticket activity, and rental exposure across every owned and rented asset, with a stale-ticket attention rail.
+
+![Equipment](assets/screenshots/equipment.png)
+
+---
+
 ## Architecture at a glance
 
 ```mermaid
