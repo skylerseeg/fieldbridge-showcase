@@ -14,9 +14,16 @@ Cross-module KPI rollup - financial (WIP), operations, bid pipeline, and roster 
 ![Executive Dashboard](../assets/screenshots/executive-dashboard.png)
 
 ### Recommendations
-Claude-generated next-actions aggregated across every module, prioritized P1/P2/P3 with dollar impact, owner, category, and a recommended step. Each item is actionable (done / snooze / dismiss) and survives regeneration.
+Claude-generated next-actions aggregated across every module, prioritized P1/P2/P3 with dollar impact, owner, category, and a recommended step. Each item is actionable (done / snooze / dismiss) and survives regeneration. Selecting a row opens a **conversational triage** thread where Claude explains why the item surfaced, lays out the supporting evidence, and proposes a plan - expandable from the side rail into a full-screen chat.
 
-![Recommendations](../assets/screenshots/recommendations.png)
+The queue with the triage rail (left), and the same thread expanded into the floating window with "Why It Surfaced" + a supporting-evidence table (right):
+
+<table>
+<tr>
+<td width="50%"><img src="../assets/screenshots/recommendations.png" alt="Recommendations queue with conversational-triage rail"></td>
+<td width="50%"><img src="../assets/screenshots/recommendations-expanded.png" alt="Expanded conversational triage: Why It Surfaced and Supporting Evidence"></td>
+</tr>
+</table>
 
 ### Activity Feed
 Every Claude agent run and data-ingest job, severity-ranked over a trailing 30 days, with per-call token counts and dollar cost - the per-tenant/per-agent metering layer made visible.
