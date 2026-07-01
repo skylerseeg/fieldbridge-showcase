@@ -70,7 +70,7 @@ Equipment-shop activity: open backlog, overdue tail, and cost-vs-budget across t
 ![Work Orders](../assets/screenshots/work-orders.png)
 
 ### Predictive Maintenance
-Calendar PMs and AI-derived failure predictions on the active fleet, prioritized by risk tier, repair cost, and time-to-due, with estimated downtime exposure.
+Calendar PMs and AI-derived failure predictions on the active fleet, prioritized by risk tier, repair cost, and time-to-due. Selecting a prediction drafts a **Claude maintenance plan** in the right rail - a structured repair plan with summary + confidence, a parts list, a labor breakdown, a suggested date window, and the open questions the model still needs answered before it can firm up cost.
 
 ![Predictive Maintenance](../assets/screenshots/predictive-maintenance.png)
 
