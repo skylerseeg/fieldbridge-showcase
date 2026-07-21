@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/favicons/company_cover_preview_1128x191.png" alt="FieldBridge" width="900" />
+  <img src="assets/favicons/lockup_ink_transparent.png" alt="FieldBridge" width="420" />
 </p>
 
 <h1 align="center">FieldBridge</h1>
